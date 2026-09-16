@@ -1,0 +1,75 @@
+{
+  "slug": "stonk",
+  "token": "STONK",
+  "name": "Stonk",
+  "chain": "solana",
+  "contract": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+  "totals": {
+    "labeled": 500,
+    "relevant": 493,
+    "shill": 127,
+    "firsthand": 92
+  },
+  "sentiment_score": 82.8,
+  "signal_n": 87,
+  "polarity": {
+    "positive": 75,
+    "mixed": 9,
+    "negative": 3,
+    "none": 4
+  },
+  "aspect": {
+    "price": 41,
+    "narrative": 22,
+    "tokenomics": 13,
+    "tech": 6,
+    "momentum": 3,
+    "community": 2
+  },
+  "aspect_polarity": {
+    "price": {
+      "positive": 32,
+      "negative": 3,
+      "mixed": 6
+    },
+    "narrative": {
+      "positive": 20,
+      "mixed": 2
+    },
+    "tokenomics": {
+      "positive": 13
+    },
+    "tech": {
+      "mixed": 1,
+      "positive": 5
+    },
+    "momentum": {
+      "positive": 3
+    },
+    "community": {
+      "positive": 2
+    }
+  },
+  "stance": {
+    "trader": 36,
+    "holder": 48,
+    "observer": 6,
+    "builder": 1
+  },
+  "action": {
+    "entry": 6,
+    "none": 25,
+    "hold": 40,
+    "buy": 15,
+    "sell": 2,
+    "exit": 3
+  },
+  "daily": [
+    {
+      "date": "2026-09-15",
+      "positive": 75,
+      "negative": 3,
+      "mixed": 9
+    }
+  ]
+}

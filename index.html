@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Seven days of firsthand opinion on X about crypto tokens. Sentiment, reasons and evidence, one post at a time.">
+  <title>ctbench</title>
+  <link rel="stylesheet" href="xbench.css">
+  <link rel="stylesheet" href="swiss.css">
+  <link rel="stylesheet" href="redesign.css?v=6">
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="#top"><strong>ctbench</strong><span>crypto twitter bench</span></a>
+    <nav><a href="#sentiment">sentiment</a><a href="#aspects">reasons</a><a href="#evidence">evidence</a><a href="#method">methods</a></nav>
+    <div class="window-chip"><i></i><span>rolling 7d</span></div>
+  </header>
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <svg class="mascot" viewBox="0 0 170 180" aria-hidden="true">
+          <g class="mascot-candles">
+            <line x1="34" y1="52" x2="34" y2="150" class="wick"/>
+            <rect x="24" y="78" width="20" height="52" class="c-up"/>
+            <line x1="66" y1="40" x2="66" y2="150" class="wick"/>
+            <rect x="56" y="62" width="20" height="74" class="c-down"/>
+            <line x1="98" y1="70" x2="98" y2="150" class="wick"/>
+            <rect x="88" y="98" width="20" height="40" class="c-mid"/>
+            <line x1="130" y1="30" x2="130" y2="150" class="wick"/>
+            <rect x="120" y="50" width="20" height="92" class="c-up"/>
+          </g>
+          <line x1="150" y1="150" x2="8" y2="150" class="baseline"/>
+          <circle cx="88" cy="86" r="52" class="lens"/>
+          <line x1="126" y1="124" x2="160" y2="158" class="handle"/>
+        </svg>
+        <div class="hero-words"><h1>ctbench</h1><p class="subtitle">measuring crypto twitter sentiment</p></div>
+      </div>
+      <aside class="hero-index">
+        <p class="file-label">public conversation</p>
+        <div class="mural-grid" id="muralGrid"><p class="mural-loading">loading public conversation...</p></div>
+      </aside>
+    </section>
+    <section class="manifest">
+      <div><span>posts read<span class="info" tabindex="0" role="note" data-tip="Every post pulled from X for these tokens over the last seven days, replies included. Most turn out to be hype, price spam or promotion and are not scored.">i</span></span><strong id="statPosts">-</strong></div>
+      <div><span>on-topic<span class="info" tabindex="0" role="note" data-tip="Posts genuinely about the token, judged against its contract address, not another project that happens to share the ticker.">i</span></span><strong id="statRelevant">-</strong></div>
+      <div><span>firsthand opinions<span class="info" tabindex="0" role="note" data-tip="Posts where the author actually holds, trades or builds on the token and says what they think. These, minus shills, are what the charts score.">i</span></span><strong id="statFirsthand">-</strong></div>
+      <div><span>shill / bot filtered<span class="info" tabindex="0" role="note" data-tip="Posts flagged as paid shills, airdrop or points farming, giveaway spam or bots. Shown in the evidence but excluded from the score.">i</span></span><strong id="statShill">-</strong></div>
+    </section>
+    <section class="tracked"><div id="trackedTokens"></div></section>
+    <div class="report-shell">
+      <aside class="rail"><p>Contents</p><a href="#sentiment"><span>01</span>Sentiment</a><a href="#aspects"><span>02</span>Reasons</a><a href="#evidence"><span>03</span>Evidence</a><a href="#method"><span>04</span>Methods</a></aside>
+      <div class="report">
+        <section class="chapter" id="sentiment">
+          <header class="chapter-head"><div><span>01</span><h2>Sentiment</h2></div><p>Net firsthand sentiment per token, ranked. Positive minus negative share, so +80 means the room is heavily net positive.</p></header>
+          <article class="panel"><div class="panel-head"><div><p class="label">firsthand stance</p><h3>Positive / mixed / negative<span class="info" tabindex="0" role="note" data-tip="Each counted post is positive, mixed or negative on the token. Net = share positive minus share negative, over relevant firsthand non-shill posts (n).">i</span></h3></div></div>
+            <div class="pattern-key"><span><i class="solid"></i>positive</span><span><i class="hatched"></i>mixed</span><span><i class="negative-mark"></i>negative</span><span class="key-note">net = % positive - % negative</span></div>
+            <div class="sentiment-axis"><span></span><div><i>0</i><i>25</i><i>50</i><i>75</i><i>100%</i></div><b>net</b></div>
+            <div id="sentimentRows" class="sentiment-rows"></div>
+            <footer><span>signal only: relevant, firsthand, non-shill</span><span>500 posts / 7 days per token</span></footer>
+          </article>
+          <article class="panel"><div class="panel-head"><div><p class="label">who is talking</p><h3>Holders, traders, builders<span class="info" tabindex="0" role="note" data-tip="Every counted post carries the author's relationship to the token. Holders and builders have skin in the game; traders are in and out; observers just comment. The tail is net intent: buys and entries minus sells and exits.">i</span></h3></div><div class="method-tag">stance of firsthand posts</div></div>
+            <div class="stance-key"><span><i class="st-holder"></i>holder</span><span><i class="st-trader"></i>trader</span><span><i class="st-builder"></i>builder</span><span><i class="st-observer"></i>observer</span><span class="key-note">tail = net buy vs sell intent</span></div>
+            <div id="stanceRows" class="stance-rows"></div>
+            <footer><span>share of firsthand, non-shill posts</span><span>net intent: buy + entry vs sell + exit</span></footer>
+          </article>
+        </section>
+        <section class="chapter" id="aspects">
+          <header class="chapter-head"><div><span>02</span><h2>Reasons</h2></div><p>What each token's crowd is actually talking about, by reason. The radar shows share of talk; the book below shows what is liked and disliked.</p></header>
+          <article class="panel radar-panel"><div class="panel-head"><div><p class="label">the shape of each one</p><h3>What each crowd talks about<span class="info" tabindex="0" role="note" data-tip="Each spoke is a reason. The further out, the more of that token's firsthand talk is about that reason. Scaled so the biggest reason reaches the edge. Spokes are the reasons every shown token has posts on; click a name to toggle it. Hollow points have fewer than five posts.">i</span></h3></div><div class="method-tag">share of talk by reason</div></div>
+            <div class="radar-wrap"><svg class="radar" id="radar" viewBox="0 0 560 560"></svg><div class="radar-legend" id="radarLegend"></div></div>
+            <footer><span>hollow point: fewer than five posts</span><span>all tokens shown - click to toggle</span></footer>
+          </article>
+          <article class="panel"><div class="panel-head"><div><p class="label">one at a time</p><h3>Why each one is liked and disliked<span class="info" tabindex="0" role="note" data-tip="For one token: the reasons people gave, split into praise and complaints, with the posts behind them.">i</span></h3></div></div>
+            <div class="book" id="book"></div>
+            <footer><span>every counted post links back to X</span></footer>
+          </article>
+        </section>
+        <section class="chapter" id="evidence">
+          <header class="chapter-head"><div><span>03</span><h2>Evidence</h2></div><p>The actual posts. Every label is public and auditable by post id.</p></header>
+          <article class="panel"><div class="panel-head"><div><p class="label">the actual tweets</p><h3>Read the room<span class="info" tabindex="0" role="note" data-tip="Filter across all six tokens. Signal = relevant, firsthand and non-shill. Each card links to the post on X.">i</span></h3></div><div class="mode-switch" id="evidenceMode" role="tablist"><button class="on" data-f="signal">signal</button><button data-f="all">all</button><button data-f="positive">positive</button><button data-f="negative">negative</button><button data-f="shill">shill/bot</button></div></div>
+            <div class="counted-evidence"><div class="evidence-heading"><span>the actual tweets</span><small id="evidenceLabel">opens on X</small></div><div class="evidence-scroll" id="evidenceScroll"></div></div>
+          </article>
+        </section>
+        <section class="chapter" id="method">
+          <header class="chapter-head"><div><span>04</span><h2>Methods and limits</h2></div><p>How this was read and where it is weak.</p></header>
+          <article class="panel"><div class="panel-head"><div><p class="label">how it works</p><h3>What counted, and what did not</h3></div><div class="method-tag">ctbench pipeline</div></div>
+            <div class="notes">
+              <div class="note"><h4>Signal only</h4><p>The score counts only posts that are on-topic, firsthand and not shill or bot. Crypto Twitter is mostly hype, so the signal is a minority of the volume. Small n means a noisier number.</p></div>
+              <div class="note"><h4>Which token</h4><p>Tickers collide. Posts are pulled and judged against the token's contract address, so $AI or $PUMP do not drag in every other project with the same symbol.</p></div>
+              <div class="note"><h4>How it is read</h4><p>Each post is read once by a Claude Code subagent following a written rulebook, with no keyword matching. Off-schema labels are normalized. Capped at 500 posts over seven days per token.</p></div>
+            </div>
+            <div class="readme-block">
+              <p>Counts toward the score</p>
+              <p>A holder, trader or builder saying what they think from real exposure - price, narrative, momentum, tech, tokenomics, community or safety.</p>
+              <p>Shown but not scored</p>
+              <p>Paid shills and airdrop or points farming - giveaway raids - templated copy-paste - reactions with no stated position.</p>
+              <p>Left out entirely</p>
+              <p>Posts about another project that shares the ticker - pure price screenshots with no take - reposted calls and hype with no firsthand use.</p>
+            </div>
+            <footer><span>every counted post links back to X</span></footer>
+          </article>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer class="site-footer"><span>ctbench - public conversation, not price</span><span id="footWindow">rolling 7 days</span><a href="https://github.com/aaronjmars/ctbench" target="_blank" rel="noreferrer">github.com/aaronjmars/ctbench</a></footer>
+  <script src="ctbench.js?v=9"></script>
+</body></html>

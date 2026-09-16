@@ -1,0 +1,81 @@
+{
+  "slug": "cashcat",
+  "token": "cashcat",
+  "name": "Cash Cat",
+  "chain": "evm",
+  "contract": "0x020bfC650A365f8BB26819deAAbF3E21291018b4",
+  "totals": {
+    "labeled": 500,
+    "relevant": 429,
+    "shill": 156,
+    "firsthand": 86
+  },
+  "sentiment_score": 54.2,
+  "signal_n": 72,
+  "polarity": {
+    "positive": 53,
+    "none": 4,
+    "negative": 14,
+    "mixed": 5
+  },
+  "aspect": {
+    "narrative": 14,
+    "price": 44,
+    "momentum": 4,
+    "community": 5,
+    "safety": 3,
+    "tokenomics": 2
+  },
+  "aspect_polarity": {
+    "narrative": {
+      "positive": 13,
+      "negative": 1
+    },
+    "price": {
+      "positive": 30,
+      "negative": 10,
+      "mixed": 4
+    },
+    "momentum": {
+      "positive": 4
+    },
+    "community": {
+      "positive": 4,
+      "mixed": 1
+    },
+    "safety": {
+      "negative": 3
+    },
+    "tokenomics": {
+      "positive": 2
+    }
+  },
+  "stance": {
+    "holder": 35,
+    "observer": 13,
+    "trader": 26,
+    "builder": 2
+  },
+  "action": {
+    "none": 17,
+    "hold": 31,
+    "buy": 12,
+    "exit": 4,
+    "entry": 5,
+    "sell": 7
+  },
+  "daily": [
+    {
+      "date": "2026-09-14",
+      "positive": 5,
+      "negative": 0,
+      "mixed": 0
+    },
+    {
+      "date": "2026-09-15",
+      "positive": 48,
+      "negative": 14,
+      "mixed": 5
+    }
+  ]
+}

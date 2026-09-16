@@ -1,0 +1,79 @@
+{
+  "slug": "ansem",
+  "token": "ANSEM",
+  "name": "Ansem",
+  "chain": "solana",
+  "contract": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+  "totals": {
+    "labeled": 500,
+    "relevant": 500,
+    "shill": 22,
+    "firsthand": 134
+  },
+  "sentiment_score": 43.2,
+  "signal_n": 125,
+  "polarity": {
+    "negative": 33,
+    "positive": 87,
+    "none": 9,
+    "mixed": 5
+  },
+  "aspect": {
+    "price": 55,
+    "narrative": 32,
+    "tech": 6,
+    "community": 9,
+    "safety": 9,
+    "tokenomics": 4,
+    "momentum": 10
+  },
+  "aspect_polarity": {
+    "price": {
+      "negative": 15,
+      "positive": 35,
+      "mixed": 5
+    },
+    "narrative": {
+      "positive": 24,
+      "negative": 8
+    },
+    "tech": {
+      "positive": 6
+    },
+    "community": {
+      "positive": 9
+    },
+    "safety": {
+      "negative": 9
+    },
+    "tokenomics": {
+      "negative": 1,
+      "positive": 3
+    },
+    "momentum": {
+      "positive": 10
+    }
+  },
+  "stance": {
+    "observer": 25,
+    "holder": 61,
+    "builder": 8,
+    "trader": 40
+  },
+  "action": {
+    "none": 45,
+    "hold": 53,
+    "exit": 8,
+    "buy": 26,
+    "sell": 1,
+    "entry": 1
+  },
+  "daily": [
+    {
+      "date": "2026-09-15",
+      "positive": 87,
+      "negative": 33,
+      "mixed": 5
+    }
+  ]
+}

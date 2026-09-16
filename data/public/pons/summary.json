@@ -1,0 +1,81 @@
+{
+  "slug": "pons",
+  "token": "PONS",
+  "name": "Pons",
+  "chain": "evm",
+  "contract": "0x39dBED3a2bd333467115dE45665cC57F813C4571",
+  "totals": {
+    "labeled": 499,
+    "relevant": 476,
+    "shill": 140,
+    "firsthand": 69
+  },
+  "sentiment_score": 54.1,
+  "signal_n": 61,
+  "polarity": {
+    "positive": 44,
+    "mixed": 6,
+    "negative": 11,
+    "none": 2
+  },
+  "aspect": {
+    "tech": 6,
+    "narrative": 18,
+    "price": 25,
+    "momentum": 5,
+    "tokenomics": 4,
+    "safety": 1,
+    "community": 2
+  },
+  "aspect_polarity": {
+    "tech": {
+      "positive": 6
+    },
+    "narrative": {
+      "mixed": 2,
+      "positive": 15,
+      "negative": 1
+    },
+    "price": {
+      "positive": 16,
+      "negative": 7,
+      "mixed": 2
+    },
+    "momentum": {
+      "negative": 1,
+      "positive": 4
+    },
+    "tokenomics": {
+      "positive": 3,
+      "mixed": 1
+    },
+    "safety": {
+      "mixed": 1
+    },
+    "community": {
+      "negative": 2
+    }
+  },
+  "stance": {
+    "builder": 7,
+    "trader": 28,
+    "holder": 18,
+    "observer": 10
+  },
+  "action": {
+    "none": 25,
+    "entry": 12,
+    "sell": 3,
+    "hold": 13,
+    "buy": 7,
+    "exit": 3
+  },
+  "daily": [
+    {
+      "date": "2026-09-15",
+      "positive": 44,
+      "negative": 11,
+      "mixed": 6
+    }
+  ]
+}

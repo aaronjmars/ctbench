@@ -1,0 +1,77 @@
+{
+  "slug": "ai",
+  "token": "AI",
+  "name": "AI token",
+  "chain": "evm",
+  "contract": "0x2E8c31162b855A2ffa90F6F8634643Ad6F111e18",
+  "totals": {
+    "labeled": 498,
+    "relevant": 439,
+    "shill": 115,
+    "firsthand": 145
+  },
+  "sentiment_score": 80.4,
+  "signal_n": 138,
+  "polarity": {
+    "none": 5,
+    "negative": 9,
+    "positive": 120,
+    "mixed": 9
+  },
+  "aspect": {
+    "price": 56,
+    "narrative": 52,
+    "momentum": 25,
+    "tokenomics": 2,
+    "community": 1,
+    "safety": 2
+  },
+  "aspect_polarity": {
+    "price": {
+      "negative": 6,
+      "positive": 48,
+      "mixed": 2
+    },
+    "narrative": {
+      "positive": 48,
+      "mixed": 3,
+      "negative": 1
+    },
+    "momentum": {
+      "mixed": 4,
+      "positive": 20,
+      "negative": 1
+    },
+    "tokenomics": {
+      "positive": 2
+    },
+    "community": {
+      "negative": 1
+    },
+    "safety": {
+      "positive": 2
+    }
+  },
+  "stance": {
+    "trader": 69,
+    "holder": 24,
+    "observer": 49,
+    "builder": 1
+  },
+  "action": {
+    "hold": 47,
+    "none": 70,
+    "buy": 17,
+    "sell": 1,
+    "entry": 7,
+    "exit": 1
+  },
+  "daily": [
+    {
+      "date": "2026-09-15",
+      "positive": 120,
+      "negative": 9,
+      "mixed": 9
+    }
+  ]
+}

@@ -1,0 +1,287 @@
+/* redesign.css - premium editorial pass over swiss.css. Loaded last.
+   Nothing here changes markup or data; it retouches type, figures, spacing,
+   texture and interaction states. Vendored xbench.css/swiss.css stay verbatim. */
+
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&display=swap");
+
+/* ---- type system: grotesk body, mono for technical labels, serif display ---- */
+/* beats swiss.css `*{...!important}` (specificity 0) via `body *` (specificity 1) */
+body,
+body *:not(svg):not(path):not(g):not(rect):not(line):not(polygon):not(circle):not(text) {
+  font-family: "Geist", "Inter", "Helvetica Neue", Arial, sans-serif !important;
+}
+svg text {
+  font-family: "Geist", "Inter", Helvetica, Arial, sans-serif !important;
+}
+
+/* technical / label voice -> mono. the small tracked-uppercase bits read as instrument print */
+.wordmark span, .prompt, .label, .method-tag, .file-label, .manifest span,
+.rail p, .tracked header, .chapter-head span, .panel footer, .scroll-cue,
+.matrix-note, .rating-explainer, .evidence-heading, .sentiment-axis,
+.pattern-key, .legend-note, .note h4, .book-meta, .counted-tweet small,
+.counted-tweet header small, .counted-tweet footer, .mode-switch button,
+.pick, .legend-chip, .aspects h4, .tasks span, .readme-block p:nth-child(odd),
+.r-val, .site-footer {
+  font-family: "Geist Mono", ui-monospace, "SFMono-Regular", Menlo, monospace !important;
+}
+
+/* editorial display serif on the big titles only */
+.hero h1, .chapter h2 {
+  font-family: "Fraunces", "Georgia", serif !important;
+  font-weight: 500;
+  letter-spacing: -.03em;
+}
+.hero h1 { font-weight: 600; letter-spacing: -.035em; }
+
+/* ---- tabular figures everywhere a number carries meaning ---- */
+.manifest strong, .metric-tail, .book-meta b, .sentiment-axis, .r-val,
+.rating-score, .score-row b, .score-row small, .aspects li b, .counted-tweet footer,
+.harness-sentiment-row > b {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1, "cv01" 1;
+}
+.manifest strong { letter-spacing: -.02em; }
+
+/* ---- scale up: xbench ships body{zoom:.8}; restore to full size ---- */
+body { zoom: 1; }
+/* hero was tuned for .8; rein the display title in so it fits its column at 1 */
+.hero h1 { font-size: clamp(52px, 5vw, 92px) !important; line-height: .98; }
+.subtitle { font-size: clamp(18px, 1.9vw, 26px) !important; }
+.mascot { height: clamp(110px, 12vw, 180px); }
+
+/* ---- spacing: kill the dead vertical bands ---- */
+.hero { min-height: 0; }
+.hero-copy { padding-top: 40px; padding-bottom: 40px; }
+.chapter { padding-top: 64px; }
+.chapter + .chapter::before { margin-bottom: 56px; opacity: .8; }
+
+/* ---- paper texture + whisper depth (breaks the flat vector look) ---- */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: .5;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+.panel {
+  box-shadow: 0 1px 0 rgba(18,18,18,.02), 0 22px 40px -30px rgba(18,18,18,.28);
+}
+.hero-index { box-shadow: 0 20px 44px -34px rgba(18,18,18,.4); }
+
+/* ---- interaction states: hover, active press, keyboard focus ---- */
+.mode-switch button, .pick, .legend-chip, .topbar nav a, .rail a {
+  transition: color .16s ease, background .16s ease, border-color .16s ease, transform .1s ease;
+}
+.mode-switch button:active, .pick:active, .legend-chip:active { transform: translateY(1px); }
+.mode-switch button:not(.on):hover { background: var(--b07); color: var(--inkc); }
+
+.sentiment-row { transition: background .16s ease; }
+.sentiment-row:hover { background: rgba(43,75,214,.03); }
+
+.counted-tweet { transition: background .16s ease, box-shadow .16s ease, transform .1s ease; }
+.counted-tweet:hover { box-shadow: 0 16px 30px -24px rgba(18,18,18,.5); }
+
+a:focus-visible, button:focus-visible, .legend-chip:focus-visible,
+.pick:focus-visible, .info:focus-visible, .counted-tweet:focus-visible {
+  outline: 2px solid var(--signal-blue);
+  outline-offset: 2px;
+  border-radius: 1px;
+}
+
+/* nav: mark the section you are in (checklist: current-page indicator) */
+.rail a:hover span, .rail a.on span { color: var(--rust); }
+
+@media (prefers-reduced-motion: reduce) {
+  .mode-switch button, .pick, .legend-chip, .counted-tweet, .sentiment-row { transition: none; }
+}
+
+/* ============================================================
+   liveliness pass: color on the data (badges, spines, stance)
+   plus the hero mascot. echoes xbench's scannable colored tags.
+   ============================================================ */
+:root { --gold:#b0892f; --trader:#2f9e73; --builder:#7a5cc0; }
+
+/* --- evidence badges: filled sentiment chips, firsthand stays outlined --- */
+.counted-tweet footer .tag {
+  padding: 2px 7px; border-radius: 2px; border: 1px solid transparent;
+  font-weight: 600; letter-spacing: .01em;
+  background: var(--signal-blue); color: #fff;           /* positive / default */
+}
+.counted-tweet footer .tag.neg { background: var(--rust); color: #fff; }
+.counted-tweet footer .tag.mix { background: var(--gold); color: #fff; border-style: solid; }
+.counted-tweet footer .tag.fh {
+  background: transparent; color: var(--signal-blue); border-color: var(--signal-blue);
+}
+
+/* --- colored left spine per polarity: scan a strip at a glance --- */
+.counted-tweet { border-left: 3px solid var(--b15) !important; }
+.counted-tweet.pol-positive { border-left-color: var(--signal-blue) !important; }
+.counted-tweet.pol-negative { border-left-color: var(--rust) !important; }
+.counted-tweet.pol-mixed    { border-left-color: var(--gold) !important; }
+
+.mural-card { box-shadow: inset 3px 0 0 var(--b15); }
+.mural-card.pol-positive { box-shadow: inset 3px 0 0 var(--signal-blue); }
+.mural-card.pol-negative { box-shadow: inset 3px 0 0 var(--rust); }
+.mural-card.pol-mixed    { box-shadow: inset 3px 0 0 var(--gold); }
+
+em.pol {
+  font-style: normal; padding: 1px 6px; border-radius: 2px;
+  font-size: 9px; font-weight: 600; letter-spacing: .02em;
+  font-family: "Geist Mono", ui-monospace, monospace;
+}
+em.pol.pol-positive { background: var(--signal-blue); color: #fff; }
+em.pol.pol-negative { background: var(--rust); color: #fff; }
+em.pol.pol-mixed    { background: var(--gold); color: #fff; }
+em.pol.pol-none     { background: var(--b15); color: var(--b48); }
+
+/* --- stance panel: who is talking --- */
+.stance-key {
+  display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 18px 28px 4px;
+  color: var(--b48); font-size: 11px;
+  font-family: "Geist Mono", ui-monospace, monospace !important;
+}
+.stance-key span { display: flex; align-items: center; gap: 8px; }
+.stance-key i { display: block; width: 20px; height: 9px; }
+.stance-key .key-note { margin-left: auto; color: var(--b28); }
+.st-holder   { background: var(--signal-blue); }
+.st-trader   { background: var(--trader); }
+.st-builder  { background: var(--builder); }
+.st-observer { background: var(--grey); }
+
+.stance-rows { padding: 6px 28px 22px; }
+.stance-row {
+  display: grid; grid-template-columns: 210px 1fr 92px; gap: 20px;
+  align-items: center; padding: 13px 0; border-bottom: 1px solid var(--b15);
+}
+.stance-row:last-child { border-bottom: 0; }
+.stance-name strong { display: block; font-weight: 600; }
+.stance-name small {
+  color: var(--b48); font-size: 11px;
+  font-family: "Geist Mono", ui-monospace, monospace !important;
+  font-variant-numeric: tabular-nums;
+}
+.stance-bar { display: flex; height: 22px; border: 1px solid var(--b28); overflow: hidden; }
+.stance-bar span { height: 100%; min-width: 1px; transition: filter .15s ease; }
+.stance-bar:hover span { filter: saturate(.6) opacity(.65); }
+.stance-bar span:hover { filter: none; }
+.stance-intent {
+  text-align: right; font-size: 14px; font-weight: 500;
+  font-family: "Geist Mono", ui-monospace, monospace !important;
+  font-variant-numeric: tabular-nums;
+}
+.stance-intent.positive { color: var(--signal-blue); }
+.stance-intent.negative { color: var(--rust); }
+@media (max-width: 680px) { .stance-row { grid-template-columns: 1fr; gap: 8px; } }
+
+/* --- hero mascot: magnifier over candlesticks --- */
+.mascot {
+  height: clamp(150px, 20vw, 280px); width: auto; flex: 0 0 auto;
+  filter: drop-shadow(0 6px 0 rgba(18,18,18,.06));
+  overflow: visible;
+}
+.mascot .wick { stroke: var(--inkc); stroke-width: 3; }
+.mascot .baseline { stroke: var(--inkc); stroke-width: 2; }
+.mascot .c-up   { fill: var(--signal-blue); stroke: var(--inkc); stroke-width: 2; }
+.mascot .c-down { fill: var(--rust); stroke: var(--inkc); stroke-width: 2; }
+.mascot .c-mid  { fill: var(--gold); stroke: var(--inkc); stroke-width: 2; }
+.mascot .lens {
+  fill: rgba(43,75,214,.07); stroke: var(--inkc); stroke-width: 6;
+}
+.mascot .handle { stroke: var(--inkc); stroke-width: 11; stroke-linecap: round; }
+@media (max-width: 900px) { .mascot { display: none; } }
+
+/* ============================================================
+   chart hover: cursor tooltip + segment/shape highlight
+   ============================================================ */
+.chart-tip {
+  position: fixed; z-index: 10000; pointer-events: none;
+  padding: 6px 10px; background: var(--inkc); color: var(--paper);
+  font-family: "Geist Mono", ui-monospace, monospace; font-size: 11.5px;
+  letter-spacing: .01em; border-radius: 3px; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 10px 26px -10px rgba(18,18,18,.55);
+}
+.chart-tip[hidden] { display: none; }
+
+/* sentiment stacked bar: fade siblings, keep hovered segment lit */
+.stack span { transition: filter .12s ease; cursor: pointer; }
+.stack:hover span { filter: opacity(.4) saturate(.5); }
+.stack span:hover { filter: none; }
+
+/* stance bar segments already dim on hover; give them the pointer too */
+.stance-bar span { cursor: pointer; }
+
+/* radar: let the shapes and points take the cursor (xbench kills pointer-events) */
+.r-poly { pointer-events: stroke !important; cursor: pointer; }
+.r-pt { pointer-events: auto !important; cursor: pointer; }
+.r-poly.hover { stroke-width: 2 !important; }
+
+/* ============================================================
+   topbar wordmark: keep it on one line; mobile pass
+   ============================================================ */
+/* 220px column was too tight at full zoom, so 'crypto twitter bench' wrapped */
+.topbar { grid-template-columns: auto 1fr auto; gap: 24px; }
+.wordmark { white-space: nowrap; }
+.wordmark span { white-space: nowrap; }
+
+/* phones: drop the tagline, tighten padding */
+@media (max-width: 620px) {
+  .wordmark span { display: none; }
+  .topbar { padding: 0 18px; gap: 12px; }
+}
+
+/* stance rows reflow: name on top, bar + intent share a line */
+@media (max-width: 680px) {
+  .stance-row {
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "name name" "bar intent";
+    gap: 6px 12px; align-items: center;
+  }
+  .stance-name { grid-area: name; }
+  .stance-bar { grid-area: bar; }
+  .stance-intent { grid-area: intent; }
+  .stance-key { padding: 14px 16px 4px; }
+  .stance-rows { padding: 4px 16px 18px; }
+}
+
+/* hero: stack cleanly and shrink the title on small screens */
+@media (max-width: 620px) {
+  .hero h1 { font-size: clamp(46px, 13vw, 66px) !important; }
+  .subtitle { font-size: clamp(16px, 4.5vw, 20px) !important; }
+  .hero-copy { padding: 28px 20px 24px; gap: 0; }
+}
+
+/* ============================================================
+   radar: 6 distinct series so all tokens can overlay at once
+   ============================================================ */
+:root {
+  --s0:#2b4bd6; --s1:#2f9e73; --s2:#b5502e; --s3:#7a5cc0; --s4:#b0892f; --s5:#121212;
+}
+.r-poly.p0 { stroke:var(--s0)!important; fill:rgba(43,75,214,.06)!important; stroke-dasharray:none!important; }
+.r-poly.p1 { stroke:var(--s1)!important; fill:rgba(47,158,115,.06)!important; stroke-dasharray:none!important; }
+.r-poly.p2 { stroke:var(--s2)!important; fill:rgba(181,80,46,.06)!important; stroke-dasharray:2 4!important; }
+.r-poly.p3 { stroke:var(--s3)!important; fill:rgba(122,92,192,.06)!important; stroke-dasharray:none!important; }
+.r-poly.p4 { stroke:var(--s4)!important; fill:rgba(176,137,47,.06)!important; stroke-dasharray:7 4!important; }
+.r-poly.p5 { stroke:var(--s5)!important; fill:rgba(18,18,18,.045)!important; stroke-dasharray:9 3 2 3!important; }
+.r-pt.p0 { fill:var(--s0)!important; stroke:var(--s0)!important; }
+.r-pt.p1 { fill:var(--s1)!important; stroke:var(--s1)!important; }
+.r-pt.p2 { fill:var(--s2)!important; stroke:var(--s2)!important; }
+.r-pt.p3 { fill:var(--s3)!important; stroke:var(--s3)!important; }
+.r-pt.p4 { fill:var(--s4)!important; stroke:var(--s4)!important; }
+.r-pt.p5 { fill:var(--s5)!important; stroke:var(--s5)!important; }
+.r-pt.thin { fill:var(--paper)!important; }
+.legend-chip.on.p0 i { border-color:var(--s0)!important; }
+.legend-chip.on.p1 i { border-color:var(--s1)!important; }
+.legend-chip.on.p2 i { border-color:var(--s2)!important; border-top-style:dotted!important; }
+.legend-chip.on.p3 i { border-color:var(--s3)!important; }
+.legend-chip.on.p4 i { border-color:var(--s4)!important; border-top-style:dashed!important; }
+.legend-chip.on.p5 i { border-color:var(--s5)!important; border-top-style:dashed!important; }
+.legend-chip.on.p0 span, .legend-chip.on.p0 small { color:var(--s0)!important; }
+.legend-chip.on.p1 span, .legend-chip.on.p1 small { color:var(--s1)!important; }
+.legend-chip.on.p2 span, .legend-chip.on.p2 small { color:var(--s2)!important; }
+.legend-chip.on.p3 span, .legend-chip.on.p3 small { color:var(--s3)!important; }
+.legend-chip.on.p4 span, .legend-chip.on.p4 small { color:var(--s4)!important; }
+.legend-chip.on.p5 span, .legend-chip.on.p5 small { color:var(--s5)!important; }

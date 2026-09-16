@@ -1,0 +1,10 @@
+*.py
+docs
+run.sh
+CLASSIFICATION_PROMPT.md
+tokens.json
+README.md
+.gitignore
+data/*
+!data/public
+!data/public/**

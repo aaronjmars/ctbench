@@ -1,0 +1,88 @@
+<svg width="1200" height="440" viewBox="0 0 1200 440" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Times New Roman', serif">
+  <rect width="1200" height="440" fill="#f6f6f3"/>
+
+  <!-- editorial frame -->
+  <rect x="24.5" y="24.5" width="1151" height="391" fill="none" stroke="#111311" stroke-opacity="0.18"/>
+  <g stroke="#111311" stroke-opacity="0.55" stroke-width="1.4">
+    <path d="M24 40 V24 H40"/><path d="M1160 24 H1176 V40"/>
+    <path d="M24 400 V416 H40"/><path d="M1176 400 V416 H1160"/>
+  </g>
+
+  <!-- column divider -->
+  <line x1="762" y1="104" x2="762" y2="380" stroke="#111311" stroke-opacity="0.14"/>
+
+  <!-- eyebrow -->
+  <text x="72" y="86" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="14" letter-spacing="3" fill="#111311" fill-opacity="0.62">CRYPTO TWITTER SENTIMENT BENCH</text>
+
+  <!-- mascot: magnifier over candles -->
+  <g transform="translate(60,150) scale(0.86)">
+    <line x1="34" y1="52" x2="34" y2="150" stroke="#111311" stroke-width="2"/>
+    <rect x="24" y="78" width="20" height="52" fill="#2b4bd6"/>
+    <line x1="66" y1="40" x2="66" y2="150" stroke="#111311" stroke-width="2"/>
+    <rect x="56" y="62" width="20" height="74" fill="#b5502e"/>
+    <line x1="98" y1="70" x2="98" y2="150" stroke="#111311" stroke-width="2"/>
+    <rect x="88" y="98" width="20" height="40" fill="#b0892f"/>
+    <line x1="130" y1="30" x2="130" y2="150" stroke="#111311" stroke-width="2"/>
+    <rect x="120" y="50" width="20" height="92" fill="#2b4bd6"/>
+    <line x1="150" y1="150" x2="8" y2="150" stroke="#111311" stroke-width="2.5"/>
+    <circle cx="88" cy="86" r="52" fill="#ffffff" fill-opacity="0.35" stroke="#111311" stroke-width="4"/>
+    <line x1="126" y1="124" x2="162" y2="160" stroke="#111311" stroke-width="7" stroke-linecap="round"/>
+  </g>
+
+  <!-- wordmark + tagline (constrained to the left column) -->
+  <text x="226" y="228" font-size="92" font-weight="700" fill="#111311">ctbench</text>
+  <text x="230" y="278" font-size="22" fill="#111311" fill-opacity="0.74">Seven days of firsthand opinion on X,</text>
+  <text x="230" y="306" font-size="22" fill="#111311" fill-opacity="0.74">judged one post at a time.</text>
+  <text x="230" y="342" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="13" letter-spacing="0.5" fill="#111311" fill-opacity="0.55">score the signal &#183; set aside the hype, shilling and bots</text>
+
+  <!-- mini leaderboard -->
+  <g font-family="ui-monospace, 'SF Mono', Menlo, monospace">
+    <text x="806" y="120" font-size="12" letter-spacing="2.5" fill="#111311" fill-opacity="0.55">NET FIRSTHAND SENTIMENT</text>
+    <line x1="806" y1="132" x2="1128" y2="132" stroke="#111311" stroke-opacity="0.18"/>
+
+    <!-- rows: token, chain, bar (score/100 * 200), score -->
+    <g font-size="15">
+      <!-- STONK 82.8 -->
+      <text x="806" y="172" fill="#111311">$STONK</text>
+      <text x="806" y="188" font-size="10" fill="#111311" fill-opacity="0.45">solana</text>
+      <rect x="928" y="160" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="160" width="166" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="171" text-anchor="end" font-size="14" fill="#2b4bd6">+83</text>
+
+      <!-- AI 80.4 -->
+      <text x="806" y="212" fill="#111311">$AI</text>
+      <text x="806" y="228" font-size="10" fill="#111311" fill-opacity="0.45">evm</text>
+      <rect x="928" y="200" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="200" width="161" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="211" text-anchor="end" font-size="14" fill="#2b4bd6">+80</text>
+
+      <!-- cashcat 54.2 -->
+      <text x="806" y="252" fill="#111311">$cashcat</text>
+      <text x="806" y="268" font-size="10" fill="#111311" fill-opacity="0.45">evm</text>
+      <rect x="928" y="240" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="240" width="108" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="251" text-anchor="end" font-size="14" fill="#2b4bd6">+54</text>
+
+      <!-- PONS 54.1 -->
+      <text x="806" y="292" fill="#111311">$PONS</text>
+      <text x="806" y="308" font-size="10" fill="#111311" fill-opacity="0.45">evm</text>
+      <rect x="928" y="280" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="280" width="108" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="291" text-anchor="end" font-size="14" fill="#2b4bd6">+54</text>
+
+      <!-- PUMP 48.6 -->
+      <text x="806" y="332" fill="#111311">$PUMP</text>
+      <text x="806" y="348" font-size="10" fill="#111311" fill-opacity="0.45">solana</text>
+      <rect x="928" y="320" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="320" width="97" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="331" text-anchor="end" font-size="14" fill="#2b4bd6">+49</text>
+
+      <!-- ANSEM 43.2 -->
+      <text x="806" y="372" fill="#111311">$ANSEM</text>
+      <text x="806" y="388" font-size="10" fill="#111311" fill-opacity="0.45">solana</text>
+      <rect x="928" y="360" width="200" height="10" rx="2" fill="#e4e4de"/>
+      <rect x="928" y="360" width="86" height="10" rx="2" fill="#2b4bd6"/>
+      <text x="1128" y="371" text-anchor="end" font-size="14" fill="#2b4bd6">+43</text>
+    </g>
+  </g>
+</svg>

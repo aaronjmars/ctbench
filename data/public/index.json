@@ -1,0 +1,86 @@
+[
+  {
+    "slug": "stonk",
+    "token": "STONK",
+    "name": "Stonk",
+    "chain": "solana",
+    "sentiment_score": 82.8,
+    "signal_n": 87,
+    "totals": {
+      "labeled": 500,
+      "relevant": 493,
+      "shill": 127,
+      "firsthand": 92
+    }
+  },
+  {
+    "slug": "ai",
+    "token": "AI",
+    "name": "AI token",
+    "chain": "evm",
+    "sentiment_score": 80.4,
+    "signal_n": 138,
+    "totals": {
+      "labeled": 498,
+      "relevant": 439,
+      "shill": 115,
+      "firsthand": 145
+    }
+  },
+  {
+    "slug": "cashcat",
+    "token": "cashcat",
+    "name": "Cash Cat",
+    "chain": "evm",
+    "sentiment_score": 54.2,
+    "signal_n": 72,
+    "totals": {
+      "labeled": 500,
+      "relevant": 429,
+      "shill": 156,
+      "firsthand": 86
+    }
+  },
+  {
+    "slug": "pons",
+    "token": "PONS",
+    "name": "Pons",
+    "chain": "evm",
+    "sentiment_score": 54.1,
+    "signal_n": 61,
+    "totals": {
+      "labeled": 499,
+      "relevant": 476,
+      "shill": 140,
+      "firsthand": 69
+    }
+  },
+  {
+    "slug": "pump",
+    "token": "PUMP",
+    "name": "Pump.fun",
+    "chain": "solana",
+    "sentiment_score": 48.6,
+    "signal_n": 74,
+    "totals": {
+      "labeled": 499,
+      "relevant": 419,
+      "shill": 88,
+      "firsthand": 80
+    }
+  },
+  {
+    "slug": "ansem",
+    "token": "ANSEM",
+    "name": "Ansem",
+    "chain": "solana",
+    "sentiment_score": 43.2,
+    "signal_n": 125,
+    "totals": {
+      "labeled": 500,
+      "relevant": 500,
+      "shill": 22,
+      "firsthand": 134
+    }
+  }
+]

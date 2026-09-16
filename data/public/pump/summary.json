@@ -1,0 +1,90 @@
+{
+  "slug": "pump",
+  "token": "PUMP",
+  "name": "Pump.fun",
+  "chain": "solana",
+  "contract": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+  "totals": {
+    "labeled": 499,
+    "relevant": 419,
+    "shill": 88,
+    "firsthand": 80
+  },
+  "sentiment_score": 48.6,
+  "signal_n": 74,
+  "polarity": {
+    "positive": 53,
+    "negative": 17,
+    "none": 3,
+    "mixed": 4
+  },
+  "aspect": {
+    "other": 1,
+    "momentum": 12,
+    "narrative": 14,
+    "price": 26,
+    "tokenomics": 16,
+    "community": 1,
+    "tech": 1,
+    "safety": 3
+  },
+  "aspect_polarity": {
+    "other": {
+      "positive": 1
+    },
+    "momentum": {
+      "positive": 12
+    },
+    "narrative": {
+      "negative": 3,
+      "positive": 10,
+      "mixed": 1
+    },
+    "price": {
+      "positive": 14,
+      "negative": 10,
+      "mixed": 2
+    },
+    "tokenomics": {
+      "positive": 15,
+      "mixed": 1
+    },
+    "community": {
+      "negative": 1
+    },
+    "tech": {
+      "positive": 1
+    },
+    "safety": {
+      "negative": 3
+    }
+  },
+  "stance": {
+    "holder": 17,
+    "trader": 39,
+    "builder": 5,
+    "observer": 16
+  },
+  "action": {
+    "hold": 18,
+    "buy": 12,
+    "exit": 2,
+    "none": 36,
+    "entry": 3,
+    "sell": 6
+  },
+  "daily": [
+    {
+      "date": "2026-09-14",
+      "positive": 20,
+      "negative": 9,
+      "mixed": 3
+    },
+    {
+      "date": "2026-09-15",
+      "positive": 33,
+      "negative": 8,
+      "mixed": 1
+    }
+  ]
+}

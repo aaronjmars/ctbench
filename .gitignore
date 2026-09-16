@@ -1,0 +1,14 @@
+# bulky/regenerable pipeline intermediates (raw public tweets + batches + raw labels)
+data/*/raw/
+data/*/batches/
+data/*/labels/
+# keep data/public/ (per-token summary+evidence+index = the auditable results)
+
+# noise
+__pycache__/
+*.pyc
+*.log
+.run.log
+.server.log
+.DS_Store
+.vercel
