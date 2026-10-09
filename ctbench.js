@@ -26,6 +26,24 @@ const esc = (s) =>
 const netClass = (net) => (net > 5 ? "positive" : net < -5 ? "negative" : "neutral");
 const signedPct = (n) => `${n > 0 ? "+" : ""}${Math.round(n)}`;
 
+// Posts window. X post ids are snowflakes: (id >> 22) + 1288834974657 = post time in ms.
+// The collector keeps the latest 500 posts per token, so the real window is the span
+// those posts cover, read here from the ids already in evidence.json.
+const postMs = (id) => { try { return Number((BigInt(id) >> 22n) + 1288834974657n); } catch { return NaN; } };
+function postWindow(rows) {
+  const ts = rows.map((r) => postMs(r.post_id)).filter(Number.isFinite);
+  if (!ts.length) return null;
+  const first = Math.min(...ts), last = Math.max(...ts);
+  return { first, last, hours: (last - first) / 36e5 };
+}
+const fmtH = (h) => h.toFixed(1);
+const fmtUTC = (ms) => new Date(ms).toISOString().slice(0, 16).replace("T", " ");
+// "2026-09-15 13:59 to 22:01 UTC", keeping the end date only when it differs
+const fmtSpan = (w) => {
+  const a = fmtUTC(w.first), b = fmtUTC(w.last);
+  return `${a} to ${a.slice(0, 10) === b.slice(0, 10) ? b.slice(11) : b} UTC`;
+};
+
 // signal share of positive for a token/aspect: pos / (pos+neg+mixed)
 function aspectShare(ap) {
   if (!ap) return { v: 0, n: 0 };
@@ -33,7 +51,7 @@ function aspectShare(ap) {
   return { v: n ? pos / n : 0, n };
 }
 
-let STATE = { index: [], sum: {}, ev: {}, allEv: [] };
+let STATE = { index: [], sum: {}, ev: {}, allEv: [], win: {} };
 
 /* ---------- shared chart tooltip (follows cursor) ---------- */
 const TIP = document.createElement("div");
@@ -83,7 +101,7 @@ function sentimentRows(root) {
     row.dataset.slug = e.slug;
     const w = (x) => (tot ? (x / tot) * 100 : 0);
     const seg = (cls, lbl, c) => c ? `<span class="${cls}" style="width:${w(c)}%" data-tip="${lbl} &middot; ${c} &middot; ${Math.round(w(c))}%"></span>` : "";
-    row.innerHTML = `<div class="sentiment-name"><strong>#${rank + 1} $${esc(e.token)}</strong><small>${esc(e.name)} &middot; ${esc(e.chain)} &middot; across ${e.signal_n} posts</small></div><div class="sentiment-main"><div class="stack" aria-label="${pos} positive, ${mix} mixed, ${neg} negative">${seg("positive", "Positive", pos)}${seg("mixed", "Mixed", mix)}${seg("negative", "Negative", neg)}</div><div class="metric-tail ${netClass(net)}">${signedPct(net)}</div></div>`;
+    row.innerHTML = `<div class="sentiment-name"><strong>#${rank + 1} $${esc(e.token)}</strong><small>${esc(e.name)} &middot; ${esc(e.chain)} &middot; across ${e.signal_n} posts${STATE.win[e.slug] ? ` in ${fmtH(STATE.win[e.slug].hours)}&nbsp;h` : ""}</small></div><div class="sentiment-main"><div class="stack" aria-label="${pos} positive, ${mix} mixed, ${neg} negative">${seg("positive", "Positive", pos)}${seg("mixed", "Mixed", mix)}${seg("negative", "Negative", neg)}</div><div class="metric-tail ${netClass(net)}">${signedPct(net)}</div></div>`;
     row.onclick = () => selectToken(e.slug);
     root.append(row);
   });
@@ -233,7 +251,7 @@ function renderBookPage(slug) {
   }).slice(0, 30);
   const stage = document.querySelector(".book-stage");
   stage.innerHTML =
-    `<section class="book-page"><header class="book-head"><div class="book-name"><strong>$${esc(s.token)}</strong></div><div class="book-meta"><b class="${netClass(net)}">${signedPct(net)}</b><span>${s.signal_n} firsthand &middot; ${p.positive || 0} / ${p.mixed || 0} / ${p.negative || 0}</span></div></header>` +
+    `<section class="book-page"><header class="book-head"><div class="book-name"><strong>$${esc(s.token)}</strong></div><div class="book-meta"><b class="${netClass(net)}">${signedPct(net)}</b><span>${s.signal_n} firsthand &middot; ${p.positive || 0} / ${p.mixed || 0} / ${p.negative || 0}</span>${STATE.win[slug] ? `<span>posts ${fmtSpan(STATE.win[slug])}</span>` : ""}</div></header>` +
     `<div class="drawer"><div class="aspects"><div class="positive"><h4>Praised for</h4><ul>${pList}</ul></div><div class="negative"><h4>Knocked for</h4><ul>${cList}</ul></div></div><div class="evidence-scroll"></div></div></section>`;
   renderCards(stage.querySelector(".evidence-scroll"), sorted, "No firsthand signal posts.");
 }
@@ -279,7 +297,20 @@ async function init() {
       STATE.sum[e.slug] = sums[i];
       STATE.ev[e.slug] = evs[i].map((r) => ({ ...r, slug: e.slug, token: e.token }));
       STATE.allEv.push(...STATE.ev[e.slug]);
+      const w = postWindow(evs[i]);
+      if (w) STATE.win[e.slug] = w;
     });
+
+    // real posts window, replacing the static fallback copy
+    const wins = Object.values(STATE.win);
+    if (wins.length) {
+      const lo = fmtH(Math.min(...wins.map((w) => w.hours))), hi = fmtH(Math.max(...wins.map((w) => w.hours)));
+      const first = Math.min(...wins.map((w) => w.first)), last = Math.max(...wins.map((w) => w.last));
+      $("#chipWindow").textContent = `latest 500 posts: ${lo} to ${hi} h`;
+      $("#boardWindow").textContent = `latest 500 posts per token, ${lo} to ${hi} h of X`;
+      $("#noteWindow").textContent = ` (${lo} to ${hi} hours per token here)`;
+      $("#footWindow").textContent = `posts from ${fmtSpan({ first, last })}`;
+    }
 
     // manifest (sum across tokens)
     const T = index.reduce((a, e) => {
