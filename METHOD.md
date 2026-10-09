@@ -100,8 +100,8 @@ intervals in RESULTS.md, and any change between two collections, are not readabl
 
 1. **Window is hours, not a week.** The 500-post cap means 4 to 31 hours per token, and the windows
    differ by token, so tokens are compared over different time spans. The README and the README hero
-   used to say seven days; fixed 2026-10-09 (correction in the run manifest). The dashboard copy in
-   `index.html` still says seven days (NEXT.md).
+   used to say seven days; fixed 2026-10-09 (correction in the run manifest). The dashboard said the
+   same and was fixed the same day; it now shows each token's window, read from the post ids.
 2. **Small signal sets.** 61 to 138 signal posts per token; interval half-widths are 9 to 20 points.
 3. **Posts are not independent.** Some authors post many times (one cashcat author has 9 of 76 signal
    posts) and replies cluster in threads. Intervals that treat posts as independent are too narrow.

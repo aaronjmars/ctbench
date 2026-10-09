@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Seven days of firsthand opinion on X about crypto tokens. Sentiment, reasons and evidence, one post at a time.">
+  <meta name="description" content="Firsthand opinion on X about crypto tokens, from the latest 500 posts per token. Sentiment, reasons and evidence, one post at a time.">
   <title>ctbench</title>
   <link rel="stylesheet" href="xbench.css">
   <link rel="stylesheet" href="swiss.css">
@@ -12,7 +12,7 @@
   <header class="topbar">
     <a class="wordmark" href="#top"><strong>ctbench</strong><span>crypto twitter bench</span></a>
     <nav><a href="#sentiment">sentiment</a><a href="#aspects">reasons</a><a href="#evidence">evidence</a><a href="#method">methods</a></nav>
-    <div class="window-chip"><i></i><span>rolling 7d</span></div>
+    <div class="window-chip"><i></i><span id="chipWindow">latest 500 posts</span></div>
   </header>
   <main id="top">
     <section class="hero">
@@ -40,7 +40,7 @@
       </aside>
     </section>
     <section class="manifest">
-      <div><span>posts read<span class="info" tabindex="0" role="note" data-tip="Every post pulled from X for these tokens over the last seven days, replies included. Most turn out to be hype, price spam or promotion and are not scored.">i</span></span><strong id="statPosts">-</strong></div>
+      <div><span>posts read<span class="info" tabindex="0" role="note" data-tip="Every post pulled from X for these tokens, replies included: the latest 500 per token. The search looks back up to 7 days but stops at 500, so busy tokens cover only hours. Most turn out to be hype, price spam or promotion and are not scored.">i</span></span><strong id="statPosts">-</strong></div>
       <div><span>on-topic<span class="info" tabindex="0" role="note" data-tip="Posts genuinely about the token, judged against its contract address, not another project that happens to share the ticker.">i</span></span><strong id="statRelevant">-</strong></div>
       <div><span>firsthand opinions<span class="info" tabindex="0" role="note" data-tip="Posts where the author actually holds, trades or builds on the token and says what they think. These, minus shills, are what the charts score.">i</span></span><strong id="statFirsthand">-</strong></div>
       <div><span>shill / bot filtered<span class="info" tabindex="0" role="note" data-tip="Posts flagged as paid shills, airdrop or points farming, giveaway spam or bots. Shown in the evidence but excluded from the score.">i</span></span><strong id="statShill">-</strong></div>
@@ -55,7 +55,7 @@
             <div class="pattern-key"><span><i class="solid"></i>positive</span><span><i class="hatched"></i>mixed</span><span><i class="negative-mark"></i>negative</span><span class="key-note">net = % positive - % negative</span></div>
             <div class="sentiment-axis"><span></span><div><i>0</i><i>25</i><i>50</i><i>75</i><i>100%</i></div><b>net</b></div>
             <div id="sentimentRows" class="sentiment-rows"></div>
-            <footer><span>signal only: relevant, firsthand, non-shill</span><span>500 posts / 7 days per token</span></footer>
+            <footer><span>signal only: relevant, firsthand, non-shill</span><span id="boardWindow">latest 500 posts per token</span></footer>
           </article>
           <article class="panel"><div class="panel-head"><div><p class="label">who is talking</p><h3>Holders, traders, builders<span class="info" tabindex="0" role="note" data-tip="Every counted post carries the author's relationship to the token. Holders and builders have skin in the game; traders are in and out; observers just comment. The tail is net intent: buys and entries minus sells and exits.">i</span></h3></div><div class="method-tag">stance of firsthand posts</div></div>
             <div class="stance-key"><span><i class="st-holder"></i>holder</span><span><i class="st-trader"></i>trader</span><span><i class="st-builder"></i>builder</span><span><i class="st-observer"></i>observer</span><span class="key-note">tail = net buy vs sell intent</span></div>
@@ -86,7 +86,7 @@
             <div class="notes">
               <div class="note"><h4>Signal only</h4><p>The score counts only posts that are on-topic, firsthand and not shill or bot. Crypto Twitter is mostly hype, so the signal is a minority of the volume. Small n means a noisier number.</p></div>
               <div class="note"><h4>Which token</h4><p>Tickers collide. Posts are pulled and judged against the token's contract address, so $AI or $PUMP do not drag in every other project with the same symbol.</p></div>
-              <div class="note"><h4>How it is read</h4><p>Each post is read once by a Claude Code subagent following a written rulebook, with no keyword matching. Off-schema labels are normalized. Capped at 500 posts over seven days per token.</p></div>
+              <div class="note"><h4>How it is read</h4><p>Each post is read once by a Claude Code subagent following a written rulebook, with no keyword matching. Off-schema labels are normalized. Capped at the latest 500 posts per token: the search looks back up to 7 days but stops at 500, so the window is whatever those posts span<span id="noteWindow"></span>.</p></div>
             </div>
             <div class="readme-block">
               <p>Counts toward the score</p>
@@ -102,6 +102,6 @@
       </div>
     </div>
   </main>
-  <footer class="site-footer"><span>ctbench - public conversation, not price</span><span id="footWindow">rolling 7 days</span><a href="https://github.com/aaronjmars/ctbench" target="_blank" rel="noreferrer">github.com/aaronjmars/ctbench</a></footer>
-  <script src="ctbench.js?v=9"></script>
+  <footer class="site-footer"><span>ctbench - public conversation, not price</span><span id="footWindow">latest 500 posts per token</span><a href="https://github.com/aaronjmars/ctbench" target="_blank" rel="noreferrer">github.com/aaronjmars/ctbench</a></footer>
+  <script src="ctbench.js?v=10"></script>
 </body></html>
