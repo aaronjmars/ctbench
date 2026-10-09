@@ -24,6 +24,9 @@ if [ "${1:-}" = "serve" ]; then
   serve
 fi
 
+# one run id for the whole sweep, so every token lands in the same runs/<id>/ (standard.py)
+export CTBENCH_RUN_ID="${CTBENCH_RUN_ID:-$(date -u +%Y-%m-%d)-sentiment-snapshot}"
+
 one() {
   echo "== $1 =="
   python3 collect.py "$1"

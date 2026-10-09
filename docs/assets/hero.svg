@@ -31,7 +31,7 @@
 
   <!-- wordmark + tagline (constrained to the left column) -->
   <text x="226" y="228" font-size="92" font-weight="700" fill="#111311">ctbench</text>
-  <text x="230" y="278" font-size="22" fill="#111311" fill-opacity="0.74">Seven days of firsthand opinion on X,</text>
+  <text x="230" y="278" font-size="22" fill="#111311" fill-opacity="0.74">Firsthand opinion on X about a token,</text>
   <text x="230" y="306" font-size="22" fill="#111311" fill-opacity="0.74">judged one post at a time.</text>
   <text x="230" y="342" font-family="ui-monospace, 'SF Mono', Menlo, monospace" font-size="13" letter-spacing="0.5" fill="#111311" fill-opacity="0.55">score the signal &#183; set aside the hype, shilling and bots</text>
 

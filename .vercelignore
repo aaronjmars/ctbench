@@ -4,6 +4,13 @@ run.sh
 CLASSIFICATION_PROMPT.md
 tokens.json
 README.md
+# bench standard records and docs (not part of the dashboard)
+runs
+METHOD.md
+NEXT.md
+RESULTS.md
+.bench-lint-ignore
+.github
 .gitignore
 data/*
 !data/public

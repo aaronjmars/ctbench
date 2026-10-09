@@ -1,0 +1,555 @@
+{
+  "schema_version": "bench-manifest/1",
+  "id": "2026-09-15-sentiment-snapshot",
+  "bench": "ctbench",
+  "question": "What is the firsthand sentiment on X for STONK, AI, cashcat, PONS, PUMP and ANSEM in the latest posts collected on 2026-09-15?",
+  "title": "crypto twitter sentiment snapshot, 6 tokens",
+  "headline": true,
+  "started_at": "2026-09-15",
+  "finished_at": null,
+  "revision": {
+    "repo": "aaronjmars/ctbench",
+    "commit": "851ab4a",
+    "dirty": null
+  },
+  "command": "./run.sh  (reconstructed: tokens ran in tokens.json order, ansem first, cashcat last)",
+  "setup": "standard",
+  "setup_notes": null,
+  "env": {
+    "collect": {
+      "since_days": 7,
+      "max_pages": 25,
+      "drop_retweets": true
+    },
+    "batch_size": 100,
+    "posts_window_utc": {
+      "stonk": [
+        "2026-09-15T13:59:25Z",
+        "2026-09-15T22:01:47Z"
+      ],
+      "ai": [
+        "2026-09-15T04:51:47Z",
+        "2026-09-15T23:24:34Z"
+      ],
+      "cashcat": [
+        "2026-09-14T22:35:43Z",
+        "2026-09-15T23:31:19Z"
+      ],
+      "pons": [
+        "2026-09-15T14:25:47Z",
+        "2026-09-15T21:57:06Z"
+      ],
+      "pump": [
+        "2026-09-14T17:08:59Z",
+        "2026-09-15T23:13:18Z"
+      ],
+      "ansem": [
+        "2026-09-15T17:41:49Z",
+        "2026-09-15T21:51:32Z"
+      ]
+    }
+  },
+  "eval_library": {
+    "name": "ctbench",
+    "version": "851ab4a"
+  },
+  "interaction_type": "single_turn",
+  "source_data": {
+    "dataset_name": "x-posts-by-token",
+    "version": "1-A",
+    "n_planned": 3000,
+    "n_completed": 2996
+  },
+  "subjects": [
+    {
+      "name": "stonk",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "STONK",
+          "name": "Stonk",
+          "chain": "solana",
+          "contract": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    },
+    {
+      "name": "ai",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "AI",
+          "name": "AI token",
+          "chain": "evm",
+          "contract": "0x2E8c31162b855A2ffa90F6F8634643Ad6F111e18"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    },
+    {
+      "name": "cashcat",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "cashcat",
+          "name": "Cash Cat",
+          "chain": "evm",
+          "contract": "0x020bfC650A365f8BB26819deAAbF3E21291018b4"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    },
+    {
+      "name": "pons",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "PONS",
+          "name": "Pons",
+          "chain": "evm",
+          "contract": "0x39dBED3a2bd333467115dE45665cC57F813C4571"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    },
+    {
+      "name": "pump",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "PUMP",
+          "name": "Pump.fun",
+          "chain": "solana",
+          "contract": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    },
+    {
+      "name": "ansem",
+      "model_info": {
+        "id": "haiku",
+        "developer": "anthropic",
+        "inference_platform": "claude-code-cli"
+      },
+      "harness": {
+        "name": "ctbench",
+        "version": "851ab4a"
+      },
+      "generation_args": {
+        "label_model": "haiku",
+        "token": {
+          "symbol": "ANSEM",
+          "name": "Ansem",
+          "chain": "solana",
+          "contract": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump"
+        },
+        "label_model_source": "inferred: tokens.json label_model at the data commit 851ab4a; the run did not log the model"
+      },
+      "version_unknown_reason": "model inferred from tokens.json; the claude CLI alias haiku was not resolved to an exact snapshot in any log"
+    }
+  ],
+  "repeats": {
+    "planned": 1,
+    "completed": 1,
+    "aggregation": "mean"
+  },
+  "llm_scoring": {
+    "judges": [
+      {
+        "model_info": {
+          "id": "haiku",
+          "developer": "anthropic"
+        }
+      }
+    ],
+    "votes": 1,
+    "input_prompt_sha": "5d2265c06d54",
+    "agreement": null
+  },
+  "metric_config": {
+    "sentiment": {
+      "metric_name": "Net firsthand sentiment",
+      "metric_unit": "points",
+      "lower_is_better": false,
+      "score_type": "continuous",
+      "min_score": -100,
+      "max_score": 100,
+      "evaluation_description": "100 x (positive - negative) / (positive + negative + mixed) over signal posts (relevant, firsthand, not bot or shill). Per post +100 / -100 / 0, averaged over the posts counted. Same number as sentiment_score in data/public, which rounds it to 1 decimal.",
+      "metric_parameters": {
+        "from": "score"
+      }
+    },
+    "signal_share": {
+      "metric_name": "Share of labeled posts counted in the score",
+      "metric_unit": "share",
+      "lower_is_better": false,
+      "score_type": "binary",
+      "evaluation_description": "signal_n / posts labeled. The rest is off-topic, bot or shill, secondhand, or has no polarity.",
+      "metric_parameters": {
+        "from": "is_correct"
+      }
+    },
+    "signal_posts": {
+      "metric_name": "Signal posts counted (signal_n)",
+      "metric_unit": "posts",
+      "lower_is_better": false,
+      "score_type": "continuous",
+      "min_score": 0,
+      "evaluation_description": "signal_n in data/public: signal posts with a positive, negative or mixed polarity.",
+      "metric_parameters": {
+        "from": "external"
+      }
+    },
+    "posts_labeled": {
+      "metric_name": "Posts labeled",
+      "metric_unit": "posts",
+      "lower_is_better": false,
+      "score_type": "continuous",
+      "min_score": 0,
+      "evaluation_description": "totals.labeled in data/public: posts that came back from the judge with a label.",
+      "metric_parameters": {
+        "from": "external"
+      }
+    }
+  },
+  "primary_metric": "sentiment",
+  "evaluation_results": {
+    "stonk": {
+      "sentiment": {
+        "score": 82.7586,
+        "uncertainty": {
+          "num_samples": 87,
+          "standard_deviation": 46.2724,
+          "standard_error": {
+            "value": 4.9609,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 72.936,
+            "upper": 92.5813,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.174,
+        "uncertainty": {
+          "num_samples": 500,
+          "standard_deviation": 0.3795,
+          "standard_error": {
+            "value": 0.017,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.1433,
+            "upper": 0.2097,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 87
+      },
+      "posts_labeled": {
+        "score": 500
+      }
+    },
+    "ai": {
+      "sentiment": {
+        "score": 80.4348,
+        "uncertainty": {
+          "num_samples": 138,
+          "standard_deviation": 53.8431,
+          "standard_error": {
+            "value": 4.5834,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 71.4514,
+            "upper": 89.4181,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.2771,
+        "uncertainty": {
+          "num_samples": 498,
+          "standard_deviation": 0.448,
+          "standard_error": {
+            "value": 0.0201,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.2396,
+            "upper": 0.318,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 138
+      },
+      "posts_labeled": {
+        "score": 498
+      }
+    },
+    "cashcat": {
+      "sentiment": {
+        "score": 54.1667,
+        "uncertainty": {
+          "num_samples": 72,
+          "standard_deviation": 80.382,
+          "standard_error": {
+            "value": 9.4731,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 35.4099,
+            "upper": 72.9234,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.144,
+        "uncertainty": {
+          "num_samples": 500,
+          "standard_deviation": 0.3514,
+          "standard_error": {
+            "value": 0.0157,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.1159,
+            "upper": 0.1775,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 72
+      },
+      "posts_labeled": {
+        "score": 500
+      }
+    },
+    "pons": {
+      "sentiment": {
+        "score": 54.0984,
+        "uncertainty": {
+          "num_samples": 61,
+          "standard_deviation": 78.6845,
+          "standard_error": {
+            "value": 10.0745,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 33.9493,
+            "upper": 74.2474,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.1222,
+        "uncertainty": {
+          "num_samples": 499,
+          "standard_deviation": 0.3279,
+          "standard_error": {
+            "value": 0.0147,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.0964,
+            "upper": 0.1539,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 61
+      },
+      "posts_labeled": {
+        "score": 499
+      }
+    },
+    "pump": {
+      "sentiment": {
+        "score": 48.6486,
+        "uncertainty": {
+          "num_samples": 74,
+          "standard_deviation": 84.7935,
+          "standard_error": {
+            "value": 9.857,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 29.1317,
+            "upper": 68.1656,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.1483,
+        "uncertainty": {
+          "num_samples": 499,
+          "standard_deviation": 0.3558,
+          "standard_error": {
+            "value": 0.0159,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.1198,
+            "upper": 0.1822,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 74
+      },
+      "posts_labeled": {
+        "score": 499
+      }
+    },
+    "ansem": {
+      "sentiment": {
+        "score": 43.2,
+        "uncertainty": {
+          "num_samples": 125,
+          "standard_deviation": 88.2957,
+          "standard_error": {
+            "value": 7.8974,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 27.7214,
+            "upper": 58.6786,
+            "confidence_level": 0.95,
+            "method": "t"
+          }
+        }
+      },
+      "signal_share": {
+        "score": 0.25,
+        "uncertainty": {
+          "num_samples": 500,
+          "standard_deviation": 0.4334,
+          "standard_error": {
+            "value": 0.0194,
+            "method": "sd of task means / sqrt(n)"
+          },
+          "confidence_interval": {
+            "lower": 0.214,
+            "upper": 0.2898,
+            "confidence_level": 0.95,
+            "method": "wilson"
+          }
+        }
+      },
+      "signal_posts": {
+        "score": 125
+      },
+      "posts_labeled": {
+        "score": 500
+      }
+    }
+  },
+  "errors": {
+    "n": 0,
+    "of": 2996,
+    "counted_as": "excluded",
+    "by_source": {}
+  },
+  "cost": {
+    "usd": null,
+    "basis": "subscription",
+    "note": "labeling on a Claude subscription; twitterapi.io collection is billed per request and was not logged"
+  },
+  "decision_rule": null,
+  "verdict": "SNAPSHOT",
+  "status": "complete",
+  "summary": "Net firsthand sentiment (signal posts only): STONK +82.8 (n=87), AI +80.4 (n=138), cashcat +54.2 (n=72), PONS +54.1 (n=61), PUMP +48.6 (n=74), ANSEM +43.2 (n=125), out of 498 to 500 posts labeled per token. One collection, one label pass: a snapshot, not a ranking test. The STONK and AI intervals sit above PUMP and ANSEM; cashcat, PONS, PUMP and ANSEM overlap each other. Intervals treat posts as independent, so they are optimistic. The posts span 2026-09-14T17:08Z to 2026-09-15T23:31Z (4 to 31 hours per token), not seven days.",
+  "compared_with": [],
+  "raw": {
+    "kept": false,
+    "reason": "raw corpus (data/<slug>/raw), batches and raw label files were gitignored and not kept. data/public/<slug>/evidence.json keeps every post id with its label, and aggregate.py rebuilds data/public byte for byte from those labels"
+  },
+  "writeup": "https://ctbench.vercel.app",
+  "superseded_by": null,
+  "corrections": [
+    {
+      "date": "2026-10-09",
+      "author": "Aaron Elijah Mars (backfill)",
+      "field": "posts window",
+      "old": "seven days of X posts (README, hero image, repo description)",
+      "new": "2026-09-14T17:08Z to 2026-09-15T23:31Z: 4 to 31 hours per token (ANSEM 4.2 h, PONS 7.5 h, STONK 8.0 h, AI 18.5 h, cashcat 24.9 h, PUMP 30.1 h), from the post id timestamps",
+      "reason": "collect.py searches 7 days back but stops at 25 pages (about 500 posts), and the newest 500 posts all fell in the last 1 to 2 days. README and hero wording fixed to match; numbers unchanged."
+    }
+  ],
+  "lint_ignore": []
+}
