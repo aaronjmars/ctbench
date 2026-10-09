@@ -1,0 +1,2 @@
+# rule  path glob  reason
+BL004 runs/*/samples.jsonl subjects are tokens and each token has its own posts (498 to 500 per token), so one n_completed cannot match every subject's row count; the manifest numbers are still recomputed from samples (BL004 on manifest.json stays on)

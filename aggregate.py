@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Aggregate one token's labels -> data/public/<slug>/{summary,evidence}.json and
-merge its headline into data/public/index.json (the leaderboard).
+merge its headline into data/public/index.json (the leaderboard). Then refresh the
+bench standard files for the run in runs/<run-id>/ (see standard.py).
 
 Headline score counts signal only: relevant + firsthand + non-shill.
 
@@ -11,6 +12,7 @@ from collections import Counter, defaultdict
 from datetime import datetime, timezone
 
 from lib import ROOT, get_token, slug_arg, tdir
+from standard import write_run
 
 
 def post_date(created_at):
@@ -120,6 +122,14 @@ def main():
     idx_path.write_text(json.dumps(sorted(idx.values(), key=lambda e: -e["sentiment_score"]), indent=2))
 
     print(f"[{slug}] score {score} (signal n={denom}), polarity {dict(pol)}")
+
+    # bench standard record of this run (manifest + one row per labeled post); the
+    # dashboard files above are already written, so a failure here only warns
+    try:
+        rdir = write_run(slugs=[slug], touch=True)
+        print(f"[{slug}] run record -> {rdir.relative_to(ROOT)}/ (then: bench-kit stats && bench-kit render)")
+    except (OSError, ValueError, KeyError) as e:
+        print(f"[{slug}] warning: run record not written: {e}")
 
 
 if __name__ == "__main__":

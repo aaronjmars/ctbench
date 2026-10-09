@@ -1,0 +1,31 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  pipeline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Byte-compile the pipeline scripts
+        run: python -m py_compile lib.py collect.py build_batches.py label.py aggregate.py standard.py
+      - name: Run record matches data/public
+        run: |
+          id=2026-09-15-sentiment-snapshot
+          cp runs/$id/samples.jsonl runs/$id/manifest.json /tmp/
+          python standard.py --run-id "$id"
+          cmp /tmp/samples.jsonl runs/$id/samples.jsonl
+          cmp /tmp/manifest.json runs/$id/manifest.json
+  bench-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aaronjmars/bench-kit@v0.2.0
+        with:
+          args: --warn-only # drop once the repo is migrated (NEXT.md)
